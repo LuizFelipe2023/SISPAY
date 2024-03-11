@@ -49,6 +49,7 @@ Este projeto é uma aplicação web para gerenciamento de pagamentos de funcion�
 ## Uso
 - Acesse a aplicação no navegador e faça login.
 - Na página inicial, você pode cadastrar novos funcionários e pagamentos, bem como visualizar, editar e excluir funcionários e pagamentos existentes.
+- Sistema Gerador de PDF
 
 ## Licença
 Este projeto está licenciado sob a [MIT License](LICENSE).
