@@ -19,7 +19,6 @@ class PaymentController extends Controller
 
     public function createPayment()
     {
-
         $employees = Employee::all();
         $final_salary = 0;
 
@@ -32,7 +31,9 @@ class PaymentController extends Controller
             'employee_name' => 'required|exists:employees,name',
             'full_salary' => 'required|numeric',
             'discounts' => 'required|numeric',
-            'final_salary' => 'required|numeric'
+            'final_salary' => 'required|numeric',
+            'date' => 'required|date',
+            'time' => 'required|date_format:H:i:s'
         ]);
 
         $employee = Employee::where('name', $validate_Data['employee_name'])->firstOrFail();
@@ -46,7 +47,9 @@ class PaymentController extends Controller
             'employee_name' => $employee->name,
             'full_salary' => $full_salary,
             'discounts' => $discounts,
-            'final_salary' => $final_salary
+            'final_salary' => $final_salary,
+            'date' => $request->date,
+            'time' => $request->time
         ]);
 
         return $payment
@@ -71,14 +74,16 @@ class PaymentController extends Controller
         $validate_Data = $request->validate([
             'employee_name' => 'required|exists:employees,name',
             'full_salary' => 'required|numeric',
-            'discounts' => 'required|numeric', 
-            'final_salary' => 'required|numeric'
+            'discounts' => 'required|numeric',
+            'final_salary' => 'required|numeric',
+            'date' => 'required|date',
+            'time' => 'required|date_format:H:i:s'
         ]);
 
         $employee = Employee::where('name', $validate_Data['employee_name'])->firstOrFail();
 
         $full_salary = $request->full_salary;
-        $discounts = $request->discounts; 
+        $discounts = $request->discounts;
         $final_salary = $full_salary - $discounts;
 
         $payment_Update = $payment->update([
@@ -86,14 +91,15 @@ class PaymentController extends Controller
             'employee_name' => $employee->name,
             'full_salary' => $full_salary,
             'discounts' => $discounts,
-            'final_salary' => $final_salary
+            'final_salary' => $final_salary,
+            'date' => $request->date,
+            'time' => $request->time
         ]);
 
         return $payment_Update
             ? redirect()->route('home-payments')->with('success', 'Pagamento atualizado com sucesso')
             : redirect()->back()->with('errors', 'Erro ao atualizar um pagamento');
     }
-
     public function deletePayment($id)
     {
 

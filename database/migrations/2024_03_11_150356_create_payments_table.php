@@ -19,6 +19,8 @@ return new class extends Migration
             $table->decimal('full_salary', 8, 2);
             $table->decimal('discounts', 8, 2);
             $table->decimal('final_salary', 8, 2);
+            $table->date('date')->nullable(); 
+            $table->time('time')->nullable();
             $table->timestamps();
         });
     }

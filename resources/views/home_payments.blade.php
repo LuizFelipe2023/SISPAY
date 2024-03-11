@@ -15,6 +15,8 @@
                         <th scope="col">Salário Integral</th>
                         <th scope="col">Descontos</th>
                         <th scope="col">Salário Final</th>
+                        <th scope="col">Data</th>
+                        <th scope="col">Tempo</th>
                         <th scope="col">Ações</th>
                     </tr>
                 </thead>
@@ -22,11 +24,13 @@
                     @foreach ($payments as $payment)
                     <tr>
                         <th scope="row">{{ $payment->id }}</th>
-                        <td>{{$payment->employee_name}}</td>
                         <td>{{ $payment->employee_id }}</td>
+                        <td>{{ $payment->employee_name }}</td>
                         <td>{{ $payment->full_salary }}</td>
                         <td>{{ $payment->discounts }}</td>
                         <td>{{ $payment->final_salary }}</td>
+                        <td>{{ \Carbon\Carbon::parse($payment->date)->format('d/m/Y') }}</td>
+                        <td>{{ \Carbon\Carbon::parse($payment->time)->format('H:i:s') }}</td>
                         <td>
                             <a href="{{ route('edit-payment', $payment->id) }}" class="btn btn-primary">Editar</a>
                             <form action="{{ route('delete-payment', $payment->id) }}" method="POST" style="display: inline;">
