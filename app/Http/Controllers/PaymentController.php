@@ -21,8 +21,9 @@ class PaymentController extends Controller
     {
 
         $employees = Employee::all();
+        $final_salary = 0;
 
-        return view('create_payment', ['employees' => $employees]);
+        return view('create_payment', ['employees' => $employees, 'final_salary' => $final_salary]);
     }
 
     public function storePayment(Request $request)
@@ -42,6 +43,7 @@ class PaymentController extends Controller
 
         $payment = Payment::create([
             'employee_id' => $employee->id,
+            'employee_name' => $employee->name,
             'full_salary' => $full_salary,
             'discounts' => $discounts,
             'final_salary' => $final_salary
@@ -57,8 +59,9 @@ class PaymentController extends Controller
     {
         $payment = Payment::findOrFail($id);
         $employees = Employee::all();
+        $final_salary = $payment->final_salary;
 
-        return view('edit_payment', ['payment' => $payment, 'employees' => $employees]);
+        return view('edit_payment', ['payment' => $payment, 'employees' => $employees, 'final_salary' => $final_salary]);
     }
 
     public function updatePayment(Request $request, $id)
@@ -80,6 +83,7 @@ class PaymentController extends Controller
 
         $payment_Update = $payment->update([
             'employee_id' => $employee->id,
+            'employee_name' => $employee->name,
             'full_salary' => $full_salary,
             'discounts' => $discounts,
             'final_salary' => $final_salary

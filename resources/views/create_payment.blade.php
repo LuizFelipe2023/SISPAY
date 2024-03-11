@@ -25,8 +25,9 @@
                 </div>
                 <div class="form-group">
                     <label for="final_salary">Salário Final</label>
-                    <input type="number" class="form-control" id="final_salary" name="final_salary" value="{{ old('final_salary', $final_salary) }}" readonly>
+                    <input type="number" class="form-control" id="final_salary" name="final_salary" value="{{ $final_salary }}">
                 </div>
+
                 <button type="submit" class="btn btn-primary mt-2">Cadastrar</button>
             </form>
         </div>
