@@ -5,6 +5,7 @@
     <div class="row">
         <div class="col-md-12 mt-4">
             <h1>Lista de Funcionários</h1>
+            <a href="{{ route('employees-pdf') }}" class="btn btn-primary mt-2 mb-3">Baixar PDF</a>
             <a href="{{ route('create-employee') }}" class="btn btn-primary mt-2 mb-3">Cadastrar Novo Funcionário</a>
             <div class="table-responsive">
                 <table class="table table-striped table-hover">

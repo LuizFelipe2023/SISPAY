@@ -3,25 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Models\Payment;
-
+use PDF;
 use Illuminate\Http\Request;
 use App\Models\Employee;
+use Illuminate\Support\Facades\View;
 
 class PaymentController extends Controller
 {
     public function homePay()
     {
-
         $payments = Payment::all();
-
         return view('home_payments', ['payments' => $payments]);
+    }
+
+    public function generatePaymentPDF()
+    {
+        $payments = Payment::all();
+        $html = View::make('payments-pdf', compact('payments'))->render();
+        $pdf = PDF::loadHtml($html);
+        return $pdf->download('payments.pdf');
     }
 
     public function createPayment()
     {
         $employees = Employee::all();
         $final_salary = 0;
-
         return view('create_payment', ['employees' => $employees, 'final_salary' => $final_salary]);
     }
 
@@ -56,7 +62,6 @@ class PaymentController extends Controller
             ? redirect()->route('home-payments')->with('success', 'Pagamento cadastrado com sucesso')
             : redirect()->back()->with('errors', 'Erro ao cadastrar um pagamento');
     }
-
 
     public function editPayment($id)
     {
@@ -100,9 +105,9 @@ class PaymentController extends Controller
             ? redirect()->route('home-payments')->with('success', 'Pagamento atualizado com sucesso')
             : redirect()->back()->with('errors', 'Erro ao atualizar um pagamento');
     }
+
     public function deletePayment($id)
     {
-
         $payment = Payment::findorFail($id);
 
         if (!$payment) {

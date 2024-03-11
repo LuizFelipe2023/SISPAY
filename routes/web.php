@@ -6,6 +6,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RegisterController;
+use App\Models\Employee;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,13 +35,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/edit/{id}',[EmployeeController::class,'editEmployee'])->name('edit-employee');
     Route::put('/update/{id}',[EmployeeController::class,'updateEmployee'])->name('update-employee');
     Route::delete('/delete/{id}',[EmployeeController::class,'deleteEmployee'])->name('delete-employee');
+    Route::get('/index/pdf',[EmployeeController::class,'generateEmployeePDF'])->name('employees-pdf'); 
     
     Route::get('/home',[PaymentController::class,'homePay'])->name('home-payments');
     Route::get('/home/create',[PaymentController::class,'createPayment'])->name('create-payment');
     Route::post('/home/store',[PaymentController::class,'storePayment'])->name('store-payment');
     Route::get('/home/edit/{id}',[PaymentController::class,'editPayment'])->name('edit-payment');
     Route::put('/home/update/{id}',[PaymentController::class,'updatePayment'])->name('update-payment');
-    Route::delete('/home/delete/{id}',[PaymentController::class,'deletePayment'])->name('delete-payment');   
+    Route::delete('/home/delete/{id}',[PaymentController::class,'deletePayment'])->name('delete-payment'); 
+    Route::get('/home/pdf',[PaymentController::class,'generatePaymentPDF'])->name('payments-pdf');  
 
     Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 });
