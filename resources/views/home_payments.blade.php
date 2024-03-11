@@ -3,9 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 mt-4">
             <h1>Lista de Pagamentos</h1>
-            <a href="{{ route('create-payment') }}" class="btn btn-primary mb-3">Cadastrar Novo Pagamento</a>
+            <a href="{{ route('create-payment') }}" class="btn btn-primary mt-2 mb-3">Cadastrar Novo Pagamento</a>
             <table class="table table-striped">
                 <thead>
                     <tr>

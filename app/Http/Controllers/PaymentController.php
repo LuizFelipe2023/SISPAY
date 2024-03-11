@@ -32,8 +32,8 @@ class PaymentController extends Controller
             'full_salary' => 'required|numeric',
             'discounts' => 'required|numeric',
             'final_salary' => 'required|numeric',
-            'date' => 'required|date',
-            'time' => 'required|date_format:H:i:s'
+            'date' => 'required',
+            'time' => 'required'
         ]);
 
         $employee = Employee::where('name', $validate_Data['employee_name'])->firstOrFail();
@@ -76,8 +76,8 @@ class PaymentController extends Controller
             'full_salary' => 'required|numeric',
             'discounts' => 'required|numeric',
             'final_salary' => 'required|numeric',
-            'date' => 'required|date',
-            'time' => 'required|date_format:H:i:s'
+            'date' => 'required',
+            'time' => 'required'
         ]);
 
         $employee = Employee::where('name', $validate_Data['employee_name'])->firstOrFail();

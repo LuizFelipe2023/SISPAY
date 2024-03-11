@@ -27,6 +27,14 @@
                     <label for="final_salary">Salário Final</label>
                     <input type="number" class="form-control" id="final_salary" name="final_salary" value="{{ $final_salary }}">
                 </div>
+                <div class="form-group">
+                    <label for="date">Data</label>
+                    <input type="date" class="form-control" id="date" name="date">
+                </div>
+                <div class="form-group">
+                    <label for="time">Hora</label>
+                    <input type="time" class="form-control" id="time" name="time">
+                </div>
 
                 <button type="submit" class="btn btn-primary mt-2">Cadastrar</button>
             </form>
