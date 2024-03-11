@@ -1,4 +1,4 @@
-# Projeto XYZ
+# Projeto SISPAY
 
 ## Descrição
 Este projeto é uma aplicação web para gerenciamento de pagamentos de funcionários.
