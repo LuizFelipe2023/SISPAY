@@ -6,7 +6,8 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RegisterController;
-use App\Models\Employee;
+use App\Http\Controllers\ForgotPasswordController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +25,10 @@ Route::post('/register', [RegisterController::class, 'store'])->name('register-S
 Route::get('/', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store'])->name('login-Submit');
 
-
+Route::get('/forget-password', [ForgotPasswordController::class, 'forgetPasswordForm'])->name('forget-password-form');
+Route::post('/submit-forget-password', [ForgotPasswordController::class, 'submitForgetPassword'])->name('submit-forget-password');
+Route::get('/reset-password/{token}', [ForgotPasswordController::class, 'resetPasswordForm'])->name('reset-password-form');
+Route::post('/submit-reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('submit-reset-password');
 
 
 
