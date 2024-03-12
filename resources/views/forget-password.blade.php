@@ -1,4 +1,4 @@
-@extends(layouts.app)
+@extends('layouts.app')
 
 @section('content')
     <div class="container mt-5">
@@ -25,7 +25,7 @@
                                 @enderror
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Send Password Reset Link</button>
+                            <button type="submit" class="btn btn-primary mt-3">Send Password Reset Link</button>
                         </form>
                     </div>
                 </div>
