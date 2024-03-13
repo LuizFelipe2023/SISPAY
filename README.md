@@ -47,7 +47,7 @@ Este projeto é uma aplicação web para gerenciamento de pagamentos de funcion�
 7. Acesse a aplicação no navegador em `http://localhost:8000`.
 
 ## Uso
-- Acesse a aplicação no navegador e faça login.
+- Acesse a aplicação no navegador e faça login, registro, reset de password(ainda em testes).
 - Na página inicial, você pode cadastrar novos funcionários e pagamentos, bem como visualizar, editar e excluir funcionários e pagamentos existentes.
 - Sistema Gerador de PDF
 
